@@ -1,5 +1,10 @@
 # dotfiles
-Dotfiles
+
+Color cat
+
+```
+alias ccat='pygmentize -g'
+```
 
 Control volume via cli
 
