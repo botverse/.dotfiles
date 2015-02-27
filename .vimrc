@@ -24,6 +24,8 @@ Plugin 'tpope/vim-rails'                  " Rails FTW
 Plugin 'groenewege/vim-less'              " LESS
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS
 Plugin 'derekwyatt/vim-scala'             " Scala
+Plugin 'Shougo/vimproc.vim'               " Async tasks
+Plugin 'Shougo/unite.vim'                 " Unite
 
 call vundle#end()
 filetype plugin indent on
@@ -101,3 +103,5 @@ else
   map <C-k> <C-w>k
   map <C-l> <C-w>l
 endif
+
+source ~/.vimunite
