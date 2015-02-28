@@ -26,6 +26,8 @@ Plugin 'cakebaker/scss-syntax.vim'        " SCSS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'Shougo/vimproc.vim'               " Async tasks
 Plugin 'Shougo/unite.vim'                 " Unite
+Plugin 'octol/vim-cpp-enhanced-highlight' " C++
+Plugin 'yonchu/accelerated-smooth-scroll' " Smooth scroll
 
 call vundle#end()
 filetype plugin indent on
@@ -36,7 +38,8 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 set background=dark
 colorscheme solarized
-syntax on
+syntax enable
+highlight LineNr ctermfg=grey ctermbg=128
 
 " Tabs
 set expandtab
@@ -51,6 +54,7 @@ map <C-\> :NERDTreeToggle<CR>
 
 " Some more crucial settings
 set number       " show line numbers
+set relativenumber " relative line numbers 
 set nowrap       " don't visually split long lines
 set showmatch    " show matching parenthesis
 set smartcase    " search case-insensitive if everything is lower case
