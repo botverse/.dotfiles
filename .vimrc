@@ -20,9 +20,7 @@ Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 
 " Language specific
-Plugin 'tpope/vim-rails'                  " Rails FTW
 Plugin 'groenewege/vim-less'              " LESS
-Plugin 'cakebaker/scss-syntax.vim'        " SCSS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'Shougo/vimproc.vim'               " Async tasks
 Plugin 'Shougo/unite.vim'                 " Unite
@@ -39,7 +37,8 @@ let g:solarized_contrast = "high"
 set background=dark
 colorscheme solarized
 syntax enable
-highlight LineNr ctermfg=grey ctermbg=128
+highlight LineNr ctermfg=grey ctermbg=236
+set cursorline
 
 " Tabs
 set expandtab
@@ -69,9 +68,13 @@ set ai           " auto indent
 set si           " smart indent
 set wrap         " wrap lines
 set autoread     " auto reload files when externally changed
+au FocusLost * :wa
+nnoremap <silent> <leader>n :nohlsearch<CR>
 
 " ruler
 set colorcolumn=80
+set ruler
+set rulerformat=%l,%v
 
 " tmux remaps
 let g:tmux_navigator_no_mappings = 1
