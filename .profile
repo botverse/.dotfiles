@@ -9,12 +9,18 @@ export PS1='\[\e[01;30m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else ech
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # colors
-export TERM=xterm-256color
 function colors {
   for i in {0..255} ; do
     printf "\x1b[38;5;${i}mcolour${i}\n"
   done
 }
+export TERM=xterm-256color
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias cat='pygmentize -g'
 
 # bin
 export PATH="/usr/local/bin:$HOME/.local/bin:$PATH:$HOME/Projects/3Dify/bin"
@@ -26,4 +32,9 @@ export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-6.5/lib:$DYLD_LIBRARY_PATH
 
 # alias
 alias less='less --RAW-CONTROL-CHARS'
-alias ccat='pygmentize -g'
+alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" 
+
+# git
+eval "$(hub alias -s)"
+source ~/.gitfonz/gitutils.sh
+
