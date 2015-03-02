@@ -31,11 +31,12 @@ call vundle#end()
 filetype plugin indent on
 
 " Colorscheme
+set t_Co=256
 let g:solarized_termtrans = 1
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-set background=dark
 colorscheme solarized
+set background=dark
 syntax enable
 highlight LineNr ctermfg=grey ctermbg=236
 set cursorline
@@ -71,6 +72,7 @@ set wrap         " wrap lines
 set autoread     " auto reload files when externally changed
 au FocusLost * :wa
 nnoremap <silent> <leader>n :nohlsearch<CR>
+imap jj <Esc>
 
 " ruler
 set colorcolumn=80
