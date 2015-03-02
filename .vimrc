@@ -18,14 +18,14 @@ Plugin 'scrooloose/nerdtree'              " File browser
 Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
 Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
+Plugin 'Shougo/vimproc.vim'               " Async tasks
+Plugin 'Shougo/unite.vim'                 " Unite
+Plugin 'yonchu/accelerated-smooth-scroll' " Smooth scroll
 
 " Language specific
 Plugin 'groenewege/vim-less'              " LESS
 Plugin 'derekwyatt/vim-scala'             " Scala
-Plugin 'Shougo/vimproc.vim'               " Async tasks
-Plugin 'Shougo/unite.vim'                 " Unite
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++
-Plugin 'yonchu/accelerated-smooth-scroll' " Smooth scroll
 
 call vundle#end()
 filetype plugin indent on
@@ -47,6 +47,7 @@ set shiftwidth=2
 set expandtab    " use spaces instead of tabs
 
 " NERDTree
+let g:NERDTreeWinSize=50
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-\> :NERDTreeToggle<CR>
