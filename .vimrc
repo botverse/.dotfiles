@@ -50,7 +50,6 @@ set expandtab    " use spaces instead of tabs
 " NERDTree
 let g:NERDTreeWinSize=50
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-\> :NERDTreeToggle<CR>
 
 " Some more crucial settings
