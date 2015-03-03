@@ -1,16 +1,22 @@
-# dotfiles
+# notes
 
 Color cat
 
-```
+```bash
 alias ccat='pygmentize -g'
 ```
 
 Control volume via cli
 
-```
+```bash
 amixer -D pulse sset Master 5%+
 amixer -D pulse sset Master 5%-
+```
+
+Get Spotify current playing song
+
+```bash
+dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata'
 ```
 
 ## Cheat Sheets
