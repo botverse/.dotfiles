@@ -5,6 +5,8 @@
 " - http://nvie.com/posts/how-i-boosted-my-vim/
 " - http://github.com/juco/dotfiles
 
+autocmd VimEnter * e ~/.vimintro
+
 " Vundle setup
 set nocompatible
 filetype off
@@ -72,6 +74,7 @@ set autoread     " auto reload files when externally changed
 au FocusLost * :wa
 nnoremap <silent> <leader>n :nohlsearch<CR>
 imap jj <Esc>
+set shortmess=I
 
 " ruler
 set colorcolumn=80
