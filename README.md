@@ -1,11 +1,5 @@
 # notes
 
-Color cat
-
-```bash
-alias ccat='pygmentize -g'
-```
-
 Control volume via cli
 
 ```bash
