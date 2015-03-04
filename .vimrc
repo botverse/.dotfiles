@@ -5,7 +5,7 @@
 " - http://nvie.com/posts/how-i-boosted-my-vim/
 " - http://github.com/juco/dotfiles
 
-autocmd VimEnter * e ~/.vimintro
+autocmd VimEnter * if !argc() | e ~/.vimintro | endif
 
 " Vundle setup
 set nocompatible
