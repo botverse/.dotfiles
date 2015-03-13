@@ -1,0 +1,3 @@
+[submodule "utils/gitfuncs"]
+	path = utils/gitfuncs
+	url = git@github.com:botverse/gitfuncs.git

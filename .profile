@@ -34,5 +34,5 @@ alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 
 # git
 eval "$(hub alias -s)"
-source ~/Projects/gitfuncs/gitutils.sh
+source ./utils/gitutils.sh
 
