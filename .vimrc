@@ -33,7 +33,6 @@ call vundle#end()
 filetype plugin indent on
 
 " Colorscheme
-set t_Co=256
 let g:solarized_termtrans = 1
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -55,7 +54,6 @@ autocmd StdinReadPre * let s:std_in=1
 map <C-\> :NERDTreeToggle<CR>
 
 " Some more crucial settings
-set number       " show line numbers
 set relativenumber " relative line numbers 
 set nowrap       " don't visually split long lines
 set showmatch    " show matching parenthesis

@@ -14,13 +14,13 @@ function colors {
     printf "\x1b[38;5;${i}mcolour${i}\n"
   done
 }
-export TERM=xterm-256color
+export TERM=term-256color
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias cat='pygmentize -g'
+alias ccat='pygmentize -g'
 
 # bin
 export PATH="/usr/local/bin:$HOME/.local/bin:$PATH:$HOME/Projects/3Dify/bin"
