@@ -15,8 +15,6 @@ function colors {
   done
 }
 export TERM=xterm-256color
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -36,5 +34,5 @@ alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 
 # git
 eval "$(hub alias -s)"
-source ~/.gitfonz/gitutils.sh
+source ~/Projects/gitfuncs/gitutils.sh
 
