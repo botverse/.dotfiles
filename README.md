@@ -1,3 +1,11 @@
+# installation
+
+```bash
+$ git clone https://github.com/botverse/.dotfiles
+$ cd .dotfiles
+$ ./setup
+```
+
 # notes
 
 Control volume via cli
