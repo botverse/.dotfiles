@@ -5,7 +5,7 @@
 " - http://nvie.com/posts/how-i-boosted-my-vim/
 " - http://github.com/juco/dotfiles
 
-autocmd VimEnter * if !argc() | e ~/.vimintro | endif
+autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimintro | endif
 
 " Vundle setup
 set nocompatible
@@ -114,4 +114,4 @@ else
   map <C-l> <C-w>l
 endif
 
-source ~/.vimunite
+source ~/.dotfiles/.vimunite
