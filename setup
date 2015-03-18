@@ -31,3 +31,7 @@ for i in "${symlinks[@]}"; do
   fi
 done
 
+# version managers
+
+curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
+curl -sSL https://get.rvm.io | bash -s stable

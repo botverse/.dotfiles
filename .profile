@@ -25,9 +25,9 @@ alias egrep='egrep --color=auto'
 alias ccat='pygmentize -g'
 
 # bin
-export PATH="/usr/local/bin:$HOME/.local/bin:$PATH:$HOME/Projects/3Dify/bin"
-export PATH=/Developer/NVIDIA/CUDA-6.5/bin:$PATH
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
+export PATH=$PATH:/Developer/NVIDIA/CUDA-6.5/bin
+export PATH=$PATH:$HOME/.rvm/bin
 
 # lib
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-6.5/lib:$DYLD_LIBRARY_PATH
