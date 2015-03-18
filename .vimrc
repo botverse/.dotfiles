@@ -73,8 +73,6 @@ au FocusLost * :wa
 nnoremap <silent> <leader>n :nohlsearch<CR>
 imap jj <Esc>
 set shortmess=I
-nnoremap ; :
-nnoremap : ;
 
 " ruler
 set colorcolumn=80

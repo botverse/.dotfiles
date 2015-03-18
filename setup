@@ -1,16 +1,33 @@
 #!/bin/bash
 
-files=(vimrc tmux.conf xbindkeysrc profile)
-
 dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-for i in "${files[@]}"; do
+# list files
+
+sources=(vimrc tmux.conf profile);
+symlinks=(xbindkeysrc);
+
+# sources
+
+for i in "${sources[@]}"; do
   if [ -e ~/.$i ]
   then
     echo "error file .$i exists";
   else
     echo "writing .$i";
     echo "source ${dir}/.$i" > ~/.$i;
+  fi
+done
+
+# symlinks
+
+for i in "${symlinks[@]}"; do
+  if [ -e ~/.$i ]
+  then
+    echo "error file .$i exists";
+  else
+    echo "symlinking .$i";
+    ln -s ${dir}/.$i ${HOME}/.$i;
   fi
 done
 
