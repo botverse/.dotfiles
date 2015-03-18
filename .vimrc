@@ -72,7 +72,7 @@ set autoread     " auto reload files when externally changed
 au FocusLost * :wa
 nnoremap <silent> <leader>n :nohlsearch<CR>
 imap jj <Esc>
-map fj :call FormatJSON()<CR>
+nmap fj :<C-U>call FormatJSON(v:count)<CR>
 set shortmess=I
 
 " ruler
@@ -115,16 +115,17 @@ else
   map <C-l> <C-w>l
 endif
 
-function FormatJSON() 
+function FormatJSON(...) 
   let code="\"
         \ var i = process.stdin, d = '';
         \ i.resume();
         \ i.setEncoding('utf8');
         \ i.on('data', function(data) { d += data; });
         \ i.on('end', function() {
-        \     console.log(JSON.stringify(JSON.parse(d), null, 2));
+        \     console.log(JSON.stringify(JSON.parse(d), null, 
+        \ " . (a:0 ? a:1 ? a:1 : 2 : 2) . "));
         \ });\""
-  execute "%! node -e ".code 
+  execute "%! node -e " . code 
 endfunction
 
 source ~/.dotfiles/.vimunite
