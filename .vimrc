@@ -25,6 +25,8 @@ Plugin 'Shougo/unite.vim'                 " Unite
 Plugin 'yonchu/accelerated-smooth-scroll' " Smooth scroll
 
 " Language specific
+Plugin 'mxw/vim-jsx'                      " jsx
+Plugin 'pangloss/vim-javascript'          " React / Javascript
 Plugin 'groenewege/vim-less'              " LESS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++
@@ -41,6 +43,8 @@ set background=dark
 syntax enable
 highlight LineNr ctermfg=grey ctermbg=236
 set cursorline
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Tabs
 set expandtab
@@ -55,6 +59,7 @@ map <C-\> :NERDTreeToggle<CR>
 
 " Some more crucial settings
 set relativenumber " relative line numbers 
+set number
 set nowrap       " don't visually split long lines
 set showmatch    " show matching parenthesis
 set smartcase    " search case-insensitive if everything is lower case
