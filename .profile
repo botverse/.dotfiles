@@ -28,15 +28,17 @@ alias ccat='pygmentize -g'
 export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
 export PATH=$PATH:/Developer/NVIDIA/CUDA-6.5/bin
 export PATH=$PATH:$HOME/.rvm/bin
+export EDITOR=nvim
 
 # lib
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-6.5/lib:$DYLD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
 
 # alias
 alias less='less --RAW-CONTROL-CHARS'
 alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" 
 
 # git
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 source $dir/utils/gitfuncs/gitutils.sh
 

@@ -22,14 +22,15 @@ Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plugin 'Shougo/vimproc.vim'               " Async tasks
 Plugin 'Shougo/unite.vim'                 " Unite
-Plugin 'yonchu/accelerated-smooth-scroll' " Smooth scroll
 
 " Language specific
-Plugin 'mxw/vim-jsx'                      " jsx
+Plugin 'othree/yajs.vim'                  " es6
 Plugin 'pangloss/vim-javascript'          " React / Javascript
+Plugin 'mxw/vim-jsx'                      " jsx
 Plugin 'groenewege/vim-less'              " LESS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++
+Plugin 'tpope/vim-bundler'                " Ruby bundler
 
 call vundle#end()
 filetype plugin indent on
@@ -53,6 +54,7 @@ set shiftwidth=2
 set expandtab    " use spaces instead of tabs
 
 " NERDTree
+let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=50
 autocmd StdinReadPre * let s:std_in=1
 map <C-\> :NERDTreeToggle<CR>
@@ -88,11 +90,18 @@ set rulerformat=%l,%v
 " tmux remaps
 let g:tmux_navigator_no_mappings = 1
 
-" Smart way to move between windows
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
+
+ " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
 
 " Seemless tmux windows swithing
 if exists('$TMUX')
