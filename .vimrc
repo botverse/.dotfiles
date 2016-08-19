@@ -16,6 +16,7 @@ call vundle#begin()
 
 " Plugin list
 Plugin 'gmarik/Vundle.vim'
+Plugin 'wesQ3/vim-windowswap'             " window swap
 Plugin 'scrooloose/nerdtree'              " File browser
 Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
 Plugin 'altercation/vim-colors-solarized' " Colours
@@ -36,22 +37,23 @@ call vundle#end()
 filetype plugin indent on
 
 " Colorscheme
+colorscheme solarized
 let g:solarized_termtrans = 1
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-colorscheme solarized
 set background=dark
-syntax enable
-highlight LineNr ctermfg=grey ctermbg=236
 set cursorline
+highlight LineNr ctermfg=grey ctermbg=236
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+syntax enable
+
+" Linting 
 match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Tabs
-set expandtab
+set expandtab    " use spaces instead of tabs
 set tabstop=2
 set shiftwidth=2
-set expandtab    " use spaces instead of tabs
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -87,21 +89,14 @@ set colorcolumn=80
 set ruler
 set rulerformat=%l,%v
 
-" tmux remaps
-let g:tmux_navigator_no_mappings = 1
-
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
-
- " Smart way to move between windows
+" Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-if has('nvim')
-  nmap <BS> <C-W>h
-endif
+" tmux remaps
+let g:tmux_navigator_no_mappings = 1
 
 " Seemless tmux windows swithing
 if exists('$TMUX')
@@ -129,17 +124,28 @@ else
   map <C-l> <C-w>l
 endif
 
-function FormatJSON(...) 
+" Copy, Cut
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
+
+" Format json with node.js
+function FormatJSON(...)
   let code="\"
         \ var i = process.stdin, d = '';
         \ i.resume();
         \ i.setEncoding('utf8');
         \ i.on('data', function(data) { d += data; });
         \ i.on('end', function() {
-        \     console.log(JSON.stringify(JSON.parse(d), null, 
+        \     console.log(JSON.stringify(JSON.parse(d), null,
         \ " . (a:0 ? a:1 ? a:1 : 2 : 2) . "));
         \ });\""
-  execute "%! node -e " . code 
+  execute "%! node -e " . code
 endfunction
 
+" NeoVim
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
+
+" Search
 source ~/.dotfiles/.vimunite
