@@ -81,7 +81,6 @@ set autoread     " auto reload files when externally changed
 au FocusLost * :wa
 nnoremap <silent> <leader>n :nohlsearch<CR>
 imap jj <Esc>
-nmap fj :<C-U>call FormatJSON(v:count)<CR>
 set shortmess=I
 
 " ruler
@@ -129,6 +128,8 @@ vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
 " Format json with node.js
+nmap fj :<C-U>call FormatJSON(v:count)<CR>
+
 function FormatJSON(...)
   let code="\"
         \ var i = process.stdin, d = '';
