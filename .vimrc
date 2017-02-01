@@ -61,6 +61,7 @@ let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=50
 autocmd StdinReadPre * let s:std_in=1
 map <C-\> :NERDTreeToggle<CR>
+nmap gn :NERDTreeFind<CR>
 
 " Some more crucial settings
 set relativenumber " relative line numbers
