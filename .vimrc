@@ -18,6 +18,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'wesQ3/vim-windowswap'             " window swap
 Plugin 'scrooloose/nerdtree'              " File browser
+Plugin 'vim-syntastic/syntastic'          " Syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
 Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
@@ -44,10 +45,10 @@ let g:solarized_contrast = "high"
 set background=dark
 set cursorline
 highlight LineNr ctermfg=grey ctermbg=236
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 syntax enable
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
-" Linting 
+" Linting
 match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Tabs
@@ -62,7 +63,7 @@ autocmd StdinReadPre * let s:std_in=1
 map <C-\> :NERDTreeToggle<CR>
 
 " Some more crucial settings
-set relativenumber " relative line numbers 
+set relativenumber " relative line numbers
 set number
 set nowrap       " don't visually split long lines
 set showmatch    " show matching parenthesis
@@ -148,5 +149,6 @@ if has('nvim')
   nmap <BS> <C-W>h
 endif
 
-" Search
+" Extern
 source ~/.dotfiles/.vimunite
+" source ~/.dotfiles/.vimsyntastic
