@@ -15,6 +15,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugin list
+Plugin 'rhysd/vim-wasm'                   "wasm
 Plugin 'gmarik/Vundle.vim'
 Plugin 'wesQ3/vim-windowswap'             " window swap
 Plugin 'scrooloose/nerdtree'              " File browser
@@ -126,8 +127,7 @@ else
 endif
 
 " Copy, Cut
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
+set clipboard=unnamed
 
 " Format json with node.js
 nmap fj :<C-U>call FormatJSON(v:count)<CR>
@@ -152,4 +152,4 @@ endif
 
 " Extern
 source ~/.dotfiles/.vimunite
-" source ~/.dotfiles/.vimsyntastic
+
