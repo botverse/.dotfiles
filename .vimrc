@@ -5,38 +5,36 @@
 " - http://nvie.com/posts/how-i-boosted-my-vim/
 " - http://github.com/juco/dotfiles
 
+" splash
 autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimintro | endif
 
-" Vundle setup
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" esc
+imap jj <Esc>
 
-call vundle#begin()
+" autoload
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugin list
-Plugin 'rhysd/vim-wasm'                   "wasm
-Plugin 'gmarik/Vundle.vim'
-Plugin 'wesQ3/vim-windowswap'             " window swap
-Plugin 'scrooloose/nerdtree'              " File browser
-Plugin 'vim-syntastic/syntastic'          " Syntax checking
-Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
-Plugin 'altercation/vim-colors-solarized' " Colours
-Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
-Plugin 'Shougo/vimproc.vim'               " Async tasks
-Plugin 'Shougo/unite.vim'                 " Unite
+Plug 'gmarik/Vundle.vim'
+Plug 'wesQ3/vim-windowswap'             " window swap
+Plug 'scrooloose/nerdtree'              " File browser
+Plug 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
+Plug 'vim-syntastic/syntastic'          " Syntax checking
+Plug 'altercation/vim-colors-solarized' " Colours
+Plug 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
+Plug 'Shougo/vimproc.vim'               " Async tasks
+Plug 'Shougo/unite.vim'                 " Unite
 
 " Language specific
-Plugin 'othree/yajs.vim'                  " es6
-Plugin 'pangloss/vim-javascript'          " React / Javascript
-Plugin 'mxw/vim-jsx'                      " jsx
-Plugin 'groenewege/vim-less'              " LESS
-Plugin 'derekwyatt/vim-scala'             " Scala
-Plugin 'octol/vim-cpp-enhanced-highlight' " C++
-Plugin 'tpope/vim-bundler'                " Ruby bundler
+Plug 'rhysd/vim-wasm'                   " wasm
+Plug 'othree/yajs.vim'                  " es6
+Plug 'pangloss/vim-javascript'          " React / Javascript
+Plug 'mxw/vim-jsx'                      " jsx
+Plug 'groenewege/vim-less'              " LESS
+Plug 'octol/vim-cpp-enhanced-highlight' " C++
+Plug 'tpope/vim-bundler'                " Ruby bundler
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " Colorscheme
 colorscheme solarized
@@ -47,9 +45,9 @@ set background=dark
 set cursorline
 highlight LineNr ctermfg=grey ctermbg=236
 syntax enable
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
-" Linting
+" Extra whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Tabs
@@ -61,13 +59,13 @@ set shiftwidth=2
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=50
 autocmd StdinReadPre * let s:std_in=1
-map <C-\> :NERDTreeToggle<CR>
-nmap gn :NERDTreeFind<CR>
+
+map <C-\> :NERDTreeTabsToggle<CR>
+nmap gn :NERDTreeTabsFind<CR>
 
 " Some more crucial settings
 set relativenumber " relative line numbers
 set number
-set nowrap       " don't visually split long lines
 set showmatch    " show matching parenthesis
 set smartcase    " search case-insensitive if everything is lower case
 set hlsearch     " highlight search terms
@@ -81,44 +79,26 @@ set ai           " auto indent
 set si           " smart indent
 set wrap         " wrap lines
 set autoread     " auto reload files when externally changed
-au FocusLost * :wa
-nnoremap <silent> <leader>n :nohlsearch<CR>
-imap jj <Esc>
 set shortmess=I
+
+au FocusLost * :wa " auto save files on lost focus
+nnoremap <silent> <leader>n :nohlsearch<CR> " un-highlight search results
+set mouse=a
 
 " ruler
 set colorcolumn=80
 set ruler
 set rulerformat=%l,%v
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 " tmux remaps
 let g:tmux_navigator_no_mappings = 1
 
 " Seemless tmux windows swithing
 if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+  nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 else
   map <C-h> <C-w>h
   map <C-j> <C-w>j
