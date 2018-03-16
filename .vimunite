@@ -16,7 +16,8 @@ nnoremap <silent> [unite]l :<C-u>Unite
 
 nnoremap  [unite]u  :<C-u>Unite source<CR>
 
-nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
+nnoremap <silent> [unite]r :<C-u>UniteResume
+        \ -buffer-name=files <CR>
 
 nnoremap [unite]b :<C-u>Unite buffer<CR>
 
