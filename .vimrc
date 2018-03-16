@@ -1,15 +1,3 @@
-"     My .vimrc
-" ___________________
-" Credit to:
-" - http://amix.dk/vim/vimrc.html
-" - http://nvie.com/posts/how-i-boosted-my-vim/
-" - http://github.com/juco/dotfiles
-
-" splash
-set shortmess=I  " no intro message starting vim
-autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimsplash | endif
-
-" autoload
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugin list
@@ -23,27 +11,12 @@ Plug 'Shougo/vimproc.vim'               " Async tasks
 Plug 'Shougo/unite.vim'                 " Unite
 
 " Language specific
-Plug 'rhysd/vim-wasm'                   " wasm
-Plug 'othree/yajs.vim'                  " es6
-Plug 'pangloss/vim-javascript'          " React / Javascript
+Plug 'pangloss/vim-javascript'          " js
 Plug 'mxw/vim-jsx'                      " jsx
 Plug 'groenewege/vim-less'              " LESS
-Plug 'octol/vim-cpp-enhanced-highlight' " C++
-Plug 'tpope/vim-bundler'                " Ruby bundler
+Plug 'styled-components/vim-styled-components' " styled-components
 
 call plug#end()
-
-" Colorscheme
-syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-highlight LineNr ctermfg=grey ctermbg=236
-
-" Extra whitespace
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Tabs
 set expandtab    " use spaces instead of tabs
@@ -73,11 +46,30 @@ set colorcolumn=80
 set ruler
 set rulerformat=%l,%v
 
+" splash
+set shortmess=I  " no intro message starting vim
+autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimsplash | endif
+
 " esc
 imap jj <Esc>
 
 " un-highlight search results
 nnoremap <silent> <leader>n :nohlsearch<CR>
+
+" javascript
+let g:jsx_ext_require = 0
+
+" Colorscheme
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+highlight LineNr ctermfg=grey ctermbg=236
+
+" Extra whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+\%#\@<!$/
 
 " NERDTree
 let NERDTreeShowHidden=1
