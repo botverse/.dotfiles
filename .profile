@@ -32,6 +32,7 @@ export PATH=$PATH:/Developer/NVIDIA/CUDA-6.5/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
 export EDITOR=nvim
+export VISUAL=nvim
 
 # lib
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-6.5/lib:$DYLD_LIBRARY_PATH
@@ -40,7 +41,9 @@ export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
 # alias
 alias less='less --RAW-CONTROL-CHARS'
 alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-alias t="todolist"
+alias t="todo"
+alias vim="nvim"
+
 
 # git
 # eval "$(hub alias -s)"

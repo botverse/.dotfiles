@@ -9,6 +9,12 @@ Plug 'altercation/vim-colors-solarized' " Colours
 Plug 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plug 'Shougo/vimproc.vim'               " Async tasks
 Plug 'Shougo/unite.vim'                 " Unite
+Plug 'ervandew/supertab'                " User Tab for everything
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Language specific
 Plug 'pangloss/vim-javascript'          " js
@@ -43,6 +49,8 @@ set wrap                      " wrap lines
 set mouse=a                   " enable mouse in neovim
 set cursorline
 
+syntax enable
+
 " ruler
 set colorcolumn=80
 set ruler
@@ -64,11 +72,11 @@ else
   map <C-l> <C-w>l
 endif
 
-" esc
+" esc and tab
 imap jj <Esc>
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " Colorscheme
-syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_visibility = "high"
@@ -86,26 +94,8 @@ nnoremap <silent> <leader>n :nohlsearch<CR>
 set shortmess=I  " no intro message starting vim
 autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimsplash | endif
 
-" javascript
-let g:jsx_ext_require = 0
-
-" Format json with node.js
-nmap fj :<C-U>call FormatJSON(v:count)<CR>
-
-function FormatJSON(...)
-  let code="\"
-        \ var i = process.stdin, d = '';
-        \ i.resume();
-        \ i.setEncoding('utf8');
-        \ i.on('data', function(data) { d += data; });
-        \ i.on('end', function() {
-        \     console.log(JSON.stringify(JSON.parse(d), null,
-        \ " . (a:0 ? a:1 ? a:1 : 2 : 2) . "));
-        \ });\""
-  execute "%! node -e " . code
-endfunction
-
 " Extern
+source ~/.dotfiles/vim/langs.vim
 source ~/.dotfiles/vim/unite.vim
 source ~/.dotfiles/vim/nerdtree.vim
 
