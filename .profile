@@ -26,17 +26,16 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ccat='pygmentize -g'
 
+export GOPATH=$HOME/go
+
+
 # bin
 export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
-export PATH=$PATH:/Developer/NVIDIA/CUDA-6.5/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
 export EDITOR=nvim
 export VISUAL=nvim
-
-# lib
-export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-6.5/lib:$DYLD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
 
 # alias
 alias less='less --RAW-CONTROL-CHARS'

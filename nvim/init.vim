@@ -7,7 +7,7 @@ Plug 'scrooloose/nerdtree'              " File browser
 Plug 'vim-syntastic/syntastic'          " Syntax checking
 Plug 'altercation/vim-colors-solarized' " Colours
 Plug 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
-Plug 'Shougo/vimproc.vim'               " Async tasks
+Plug 'Shougo/vimproc.vim', {'do': 'make' } " Async tasks
 Plug 'Shougo/unite.vim'                 " Unite
 Plug 'ervandew/supertab'                " User Tab for everything
 
@@ -32,7 +32,9 @@ set shiftwidth=2
 " Some more crucial settings
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set clipboard=unnamed         " copy cut to systems clipboard
+
+set clipboard=unnamedplus,unnamed    " copy cut to systems clipboard
+set clipboard+=unnamed
 set number
 set relativenumber            " relative line numbers
 set showmatch                 " show matching parenthesis
@@ -85,17 +87,17 @@ highlight LineNr ctermfg=grey ctermbg=236
 
 " Extra whitespace
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+\%#\@<!$/
+match ExtraWhitespace /\S\zs\s\+$/
 
 " un-highlight search results
 nnoremap <silent> <leader>n :nohlsearch<CR>
 
 " splash
-set shortmess=I  " no intro message starting vim
+set shortmess=Ia  " no intro message starting vim
 autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimsplash | endif
 
 " Extern
-source ~/.dotfiles/vim/langs.vim
-source ~/.dotfiles/vim/unite.vim
-source ~/.dotfiles/vim/nerdtree.vim
+source ~/.dotfiles/nvim/langs.vim
+source ~/.dotfiles/nvim/unite.vim
+source ~/.dotfiles/nvim/nerdtree.vim
 
