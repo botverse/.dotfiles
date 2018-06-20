@@ -5,16 +5,16 @@ Plug 'gmarik/Vundle.vim'
 Plug 'wesQ3/vim-windowswap'             " window swap
 Plug 'scrooloose/nerdtree'              " File browser
 Plug 'vim-syntastic/syntastic'          " Syntax checking
-Plug 'altercation/vim-colors-solarized' " Colours
+Plug 'morhetz/gruvbox'                  " Palette
 Plug 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plug 'Shougo/vimproc.vim', {'do': 'make' } " Async tasks
 Plug 'Shougo/unite.vim'                 " Unite
 Plug 'ervandew/supertab'                " User Tab for everything
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Language specific
 Plug 'pangloss/vim-javascript'          " js
@@ -49,11 +49,12 @@ set ai                        " auto indent
 set si                        " smart indent
 set wrap                      " wrap lines
 set mouse=a                   " enable mouse in neovim
-set cursorline
+" set cursorline
 
 syntax enable
 
 " ruler
+highlight ColorColumn ctermbg=0
 set colorcolumn=80
 set ruler
 set rulerformat=%l,%v
@@ -79,10 +80,6 @@ imap jj <Esc>
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " Colorscheme
-set background=dark
-colorscheme solarized
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
 highlight LineNr ctermfg=grey ctermbg=236
 
 " Extra whitespace
