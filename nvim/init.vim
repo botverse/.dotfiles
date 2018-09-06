@@ -9,7 +9,8 @@ Plug 'morhetz/gruvbox'                  " Palette
 Plug 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plug 'Shougo/vimproc.vim', {'do': 'make' } " Async tasks
 Plug 'Shougo/unite.vim'                 " Unite
-Plug 'ervandew/supertab'                " User Tab for everything
+Plug 'ervandew/supertab'                " Use Tab for everything
+Plug 'editorconfig/editorconfig-vim'    " Editor config
 
 " Autocomplete
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -58,6 +59,9 @@ highlight ColorColumn ctermbg=0
 set colorcolumn=80
 set ruler
 set rulerformat=%l,%v
+
+" shell
+let &shell='bash --login'
 
 " tmux remaps
 let g:tmux_navigator_no_mappings = 1
