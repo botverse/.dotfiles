@@ -28,6 +28,7 @@ alias ccat='pygmentize -g'
 
 export GOPATH=$HOME/go
 
+export TODO_DB_PATH=~/Dropbox/todo.json
 
 # bin
 export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
