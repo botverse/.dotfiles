@@ -7,6 +7,7 @@ call NERDTreeAddKeyMap({
         \ 'key': 'fs',
         \ 'callback': 'NERDTreeUniteGrep',
         \ 'quickhelpText': 'call unite for grep in current directory',
+        \ 'override': 1,
         \ 'scope': 'DirNode' })
 
 function! NERDTreeUniteGrep(dirnode)
