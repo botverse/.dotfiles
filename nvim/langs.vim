@@ -1,4 +1,3 @@
-
 " autocomplete
 set completeopt=longest,menuone,preview
 
@@ -14,18 +13,18 @@ let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Format json with node.js
-nmap fj :<C-U>call FormatJSON(v:count)<CR>
+nmap fj :<C-U>call FormatJSON('%', v:count)<CR>
+vmap fj :<C-U>call FormatJSON("'<,'>", v:count)<CR>
 
-function FormatJSON(...)
+function FormatJSON(scope, ...) range
   let code="\"
         \ var i = process.stdin, d = '';
         \ i.resume();
         \ i.setEncoding('utf8');
         \ i.on('data', function(data) { d += data; });
         \ i.on('end', function() {
-        \     console.log(JSON.stringify(JSON.parse(d), null,
-        \ " . (a:0 ? a:1 ? a:1 : 2 : 2) . "));
+        \     console.log(JSON.stringify(JSON.parse(d), null, " . (a:1 ? a:1 : 2) . "));
         \ });\""
-  execute "%! node -e " . code
+  execute a:scope . "! node -e " . code
 endfunction
 

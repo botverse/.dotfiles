@@ -24,7 +24,9 @@ export TERM=xterm-256color
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ccat='pygmentize -g'
+alias cat='bat'
+alias px='ps aux | grep'
+alias watch="$HOME/.local/bin/watch"
 
 export GOPATH=$HOME/go
 

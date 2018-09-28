@@ -29,6 +29,9 @@ call plug#end()
 set expandtab                 " use spaces instead of tabs
 set tabstop=2
 set shiftwidth=2
+set list
+set listchars=tab:➝\ ,extends:#,nbsp:. " mark the tabs
+autocmd FileType go setlocal expandtab!
 
 " Some more crucial settings
 set nocompatible              " be iMproved, required
