@@ -50,4 +50,5 @@ alias vim="nvim"
 # git
 # eval "$(hub alias -s)"
 source $dir/utils/gitfuncs/gitutils.sh
+source $dir/utils/git-completion.bash
 
