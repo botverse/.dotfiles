@@ -52,4 +52,5 @@ set -o ignoreeof
 # git
 # eval "$(hub alias -s)"
 source $dir/utils/gitfuncs/gitutils.sh
+source $dir/utils/git-completion.bash
 
