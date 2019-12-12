@@ -46,6 +46,8 @@ alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 alias t="todo"
 alias vim="nvim"
 
+# requires 10 Ctrl-d (eof) to exit to avoid closing panes in tmux
+set -o ignoreeof
 
 # git
 # eval "$(hub alias -s)"

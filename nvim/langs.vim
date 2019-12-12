@@ -23,7 +23,7 @@ function FormatJSON(scope, ...) range
         \ i.setEncoding('utf8');
         \ i.on('data', function(data) { d += data; });
         \ i.on('end', function() {
-        \     console.log(JSON.stringify(JSON.parse(d), null, " . (a:1 ? a:1 : 2) . "));
+        \     console.log(JSON.stringify(JSON.parse(d), null, " . (a:1 == 1 ? "\"null\"" : (a:1 ? a:1 : 2)) . "));
         \ });\""
   execute a:scope . "! node -e " . code
 endfunction
