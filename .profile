@@ -22,6 +22,7 @@ function colors {
 
 export TERM=xterm-256color
 alias grep='grep --color=auto'
+alias cgrep='grep --color=auto -C 10'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias cat='bat'

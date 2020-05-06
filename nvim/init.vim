@@ -86,6 +86,9 @@ endif
 imap jj <Esc>
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
+" paste without yanking
+vnoremap <leader>p "_dP
+
 " Colorscheme
 highlight LineNr ctermfg=grey ctermbg=236
 
