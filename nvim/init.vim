@@ -103,6 +103,10 @@ nnoremap <silent> <leader>n :nohlsearch<CR>
 set shortmess=Ia  " no intro message starting vim
 autocmd VimEnter * if !argc() | e ~/.dotfiles/.vimsplash | endif
 
+" very magic mode in vim by default
+nnoremap / /\v
+nnoremap ? ?\v
+
 " Extern
 source ~/.dotfiles/nvim/langs.vim
 source ~/.dotfiles/nvim/unite.vim

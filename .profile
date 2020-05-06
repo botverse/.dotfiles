@@ -11,6 +11,18 @@ export NVM_DIR="$HOME/.nvm"
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+#docker
+removecontainers() {
+    docker stop $(docker ps -aq)
+    docker rm $(docker ps -aq)
+}
+armageddon() {
+    removecontainers
+    docker network prune -f
+    docker rmi -f $(docker images --filter dangling=true -qa)
+    docker volume rm $(docker volume ls --filter dangling=true -q)
+    docker rmi -f $(docker images -qa)
+}
 
 # colors
 function colors {
@@ -47,6 +59,8 @@ alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 alias t="todo"
 alias vim="nvim"
 
+# requires 10 Ctrl-d (eof) to exit to avoid closing panes in tmux
+set -o ignoreeof
 
 # git
 # eval "$(hub alias -s)"
