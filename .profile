@@ -36,7 +36,7 @@ export TERM=xterm-256color
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias cat='bat'
+alias cat='batcat'
 alias px='ps aux | grep'
 alias watch="$HOME/.local/bin/watch"
 
@@ -49,6 +49,9 @@ export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH=$PATH:$HOME/.platformio/penv/bin
 export EDITOR=nvim
 export VISUAL=nvim
 
