@@ -37,7 +37,7 @@ alias grep='grep --color=auto'
 alias cgrep='grep --color=auto -C 10'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias cat='batcat'
+alias cat='bat'
 alias px='ps aux | grep'
 alias watch="$HOME/.local/bin/watch"
 

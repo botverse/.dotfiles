@@ -224,6 +224,12 @@ let g:used_javascript_libs = 'underscore,requirejs,chai,jquery'
 " === Signify === "
 let g:signify_sign_delete = '-'
 
+" === Tmux navigation === "
+let g:tmux_navigator_no_mappings = 1
+
+" === Mouse === "
+set mouse=a
+
 " ============================================================================ "
 " ===                                UI                                    === "
 " ============================================================================ "
@@ -401,10 +407,10 @@ noremap <Space> <PageDown>
 noremap - <PageUp>
 
 " Quick window switching
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " === coc.nvim === "
 "   <leader>dd    - Jump to definition of current symbol
@@ -481,13 +487,3 @@ if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
 
-" === Tmux navigation === "
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-
-" === Mouse === "
-set mouse=a
