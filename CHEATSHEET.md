@@ -1,4 +1,4 @@
-```
+```bash
 # Neosnippet
 <C-k>     neosnippet expand
 
@@ -33,6 +33,7 @@ p               Preview currently selected file
 
 # coc.nvim
 <leader>dd      Jump to definition of current symbol
+<leader>dv      Jump to definition of current symbol in a split window
 <leader>dr      Jump to references of current symbol
 <leader>dj      Jump to implementation of current symbol
 <leader>ds      Fuzzy search current project symbols
