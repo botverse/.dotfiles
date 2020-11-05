@@ -32,7 +32,7 @@ function colors {
   $dir/utils/color-spaces.pl
 }
 
-export TERM=xterm-256color
+export TERM=screen-256color
 alias grep='grep --color=auto'
 alias cgrep='grep --color=auto -C 10'
 alias fgrep='fgrep --color=auto'
@@ -50,6 +50,8 @@ export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
 
