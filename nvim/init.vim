@@ -421,6 +421,7 @@ nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dv :call CocAction('jumpDefinition', 'vsplit')<CR>
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
+nmap <silent> <leader>do <Plug>(coc-list-options)
 nnoremap <silent> <leader>ds :<C-u>CocList -I -N --top symbols<CR>
 
 " === vim-better-whitespace === "
