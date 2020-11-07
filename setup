@@ -2,6 +2,9 @@
 
 DIR='~/.dotfiles'
 
+touch ~/.profile
+touch ~/.bashrc
+
 # ===== Version Managers
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
@@ -18,7 +21,7 @@ for i in "${sources[@]}"; do
     echo "error file .$i exists";
   else
     echo "writing .$i";
-    echo "source ${DIR}/.$i" > ~/.$i;
+    echo "source ${DIR}/.$i" >> ~/.$i;
   fi
 done
 
