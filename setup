@@ -32,7 +32,7 @@ done
 declare -A symlinks
 
 symlinks['alacritty.yml']='~/.config/alacritty'
-symlinks['nvim/init.vim']='~/.config'
+#symlinks['nvim/init.vim']='~/.config'
 
 echo $(/bin/bash --version)
 for symlink in "${!symlinks[@]}"; do
