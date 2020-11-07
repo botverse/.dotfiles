@@ -21,7 +21,7 @@ RUN useradd moonbase \
     && mkdir /home/moonbase \
     && chown moonbase:moonbase /home/moonbase \
     && usermod -d /home/moonbase --shell /bin/bash moonbase \
-    && cat /etc/passwd
+    && echo "moonbase ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 WORKDIR /home/moonbase
 
