@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         python \
         python3 \
         python-neovim \
-        python3-neovim
+        python3-neovim \
+        neovim
 
 RUN useradd moonbase \
     && usermod -aG sudo moonbase \
