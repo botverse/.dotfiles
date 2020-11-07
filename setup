@@ -9,16 +9,10 @@ touch ~/.bashrc
 
 echo "source $DIR/.profile" >> ~/.profile
 echo "source ~/.profile" >> ~/.bashrc
-
 echo "source $DIR/.tmux.conf" >> ~/.tmux.conf;
 
-# ===== Symlinks
-
-mkdir -p ~/.config/alacritty
-ln -s ${DIR}/alacritty.yml ~/.config/alacritty/alacritty.yml
-
 mkdir -p ~/.config/nvim
-ln -s ${DIR}/nvim/init.vim ~/.config/nvim/init.vim
+echo "source $DIR/nvim/init.vim" >> ~/.config/nvim/init.vim
 
 # ===== Version Managers
 
