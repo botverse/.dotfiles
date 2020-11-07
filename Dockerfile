@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget \
         python \
         python3 \
-        python-neovim \
+#        python-neovim \
         python3-neovim \
         neovim
 
