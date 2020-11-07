@@ -1,12 +1,12 @@
 #!/bin/bash
 
-DIR='~/.dotfiles'
+DIR='/home/moonbase/.dotfiles'
 
-touch ~/.profile
-touch ~/.bashrc
+touch /home/moonbase/.profile
+touch /home/moonbase/.bashrc
 
-echo "source ~/.dotfiles/.profile" >> ~/.profile
-echo "source ~/.profile" >> ~/.bashrc
+echo "source /home/moonbase/.dotfiles/.profile" >> /home/moonbase/.profile
+echo "source /home/moonbase/.profile" >> /home/moonbase/.bashrc
 
 # ===== Version Managers
 
@@ -19,24 +19,24 @@ sources=(.tmux.conf);
 # sources
 
 for i in "${sources[@]}"; do
-  if [ -e ~/.$i ]
+  if [ -e /home/moonbase/.$i ]
   then
     echo "error file .$i exists";
   else
     echo "writing $i";
-    echo "source ${DIR}/$i" >> ~/$i;
+    echo "source ${DIR}/$i" >> /home/moonbase/$i;
   fi
 done
 
 # symlinks
 declare -A symlinks
 
-symlinks['alacritty.yml']='~/.config/alacritty'
-symlinks['nvim/init.vim']='~/.config'
+symlinks['alacritty.yml']='/home/moonbase/.config/alacritty'
+symlinks['nvim/init.vim']='/home/moonbase/.config'
 
 echo $(/bin/bash --version)
 for symlink in "${!symlinks[@]}"; do
-  if [ -e ~/.$symlink ]
+  if [ -e /home/moonbase/.$symlink ]
   then
     echo "error file .$symlink exists";
   else
@@ -47,5 +47,5 @@ for symlink in "${!symlinks[@]}"; do
   fi
 done
 
-ls -lart ~
-echo $(dirname ~)
+ls -lart /home/moonbase
+echo $(dirname /home/moonbase)
