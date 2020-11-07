@@ -1,8 +1,6 @@
 #!/bin/bash
 
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-echo "source $HOME/.dotfiles/.profile" >> $HOME/.bashrc
+DIR='~/.dotfiles'
 
 # ===== Version Managers
 
