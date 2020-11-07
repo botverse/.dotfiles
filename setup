@@ -34,7 +34,7 @@ for symlink in "${symlinks[@]}"; do
   then
     echo "error file .$symlink exists";
   else
-    echo "symlinking .$i";
+    echo "symlinking .$symlink";
     ln -s ${DIR}/.$symlink ${symlinks[$symlink]}/.$symlink;
   fi
 done

@@ -30,5 +30,5 @@ SHELL ["/bin/bash", "--login", "-c"]
 ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
 RUN git clone --branch denite https://github.com/botverse/.dotfiles /tmp/.dotfiles
 
-RUN su - moonbase -c "/tmp/.dotfiles/setup"
+RUN /tmp/.dotfiles/setup
 
