@@ -1,11 +1,16 @@
 #!/bin/bash
 
-dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-# list files
+echo "source $HOME/.dotfiles/.profile" >> $HOME/.bashrc
 
-sources=(vimrc tmux.conf profile);
-symlinks=(xbindkeysrc);
+# ===== Version Managers
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+
+# ===== Sources
+
+sources=(tmux.conf profile);
 
 # sources
 
@@ -15,23 +20,22 @@ for i in "${sources[@]}"; do
     echo "error file .$i exists";
   else
     echo "writing .$i";
-    echo "source ${dir}/.$i" > ~/.$i;
+    echo "source ${DIR}/.$i" > ~/.$i;
   fi
 done
 
 # symlinks
+declare -A symlinks
 
-for i in "${symlinks[@]}"; do
-  if [ -e ~/.$i ]
+symlinks['alacritty.yml']='~/.config/alacritty'
+
+for symlink in "${symlinks[@]}"; do
+  if [ -e ~/.$symlink ]
   then
-    echo "error file .$i exists";
+    echo "error file .$symlink exists";
   else
     echo "symlinking .$i";
-    ln -s ${dir}/.$i ${HOME}/.$i;
+    ln -s ${DIR}/.$symlink ${symlinks[$symlink]}/.$symlink;
   fi
 done
 
-# version managers
-
-curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
-curl -sSL https://get.rvm.io | bash -s stable

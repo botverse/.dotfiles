@@ -1,8 +1,5 @@
 FROM ubuntu:groovy
 
-WORKDIR /home/moonbase
-ENV HOME /home/moonbase
-
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
@@ -21,10 +18,9 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /home/moonbase
+
 ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
-RUN git clone --branch denite https://github.com/botverse/.dotfiles
+RUN git clone --branch denite https://github.com/botverse/.dotfiles /tmp/.dotfiles
 
-WORKDIR .dotfiles
-
-RUN echo "source $HOME/.dotfiles/.profile" >> $HOME/.bashrc
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+RUN /bin/bash /tmp/.dotfiles/setup

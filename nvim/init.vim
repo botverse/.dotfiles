@@ -488,3 +488,5 @@ if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
 
+" Automatically save files on blur
+au FocusLost * silent! wa
