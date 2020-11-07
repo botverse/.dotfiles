@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:groovy
 
 # Set debconf to run non-interactively
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
