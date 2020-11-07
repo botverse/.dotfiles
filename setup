@@ -2,22 +2,13 @@
 
 DIR='~/.dotfiles'
 
+# ===== Sources
+
 touch ~/.profile
 touch ~/.bashrc
 
 echo "source $DIR/.profile" >> ~/.profile
 echo "source ~/.profile" >> ~/.bashrc
-
-# ===== Version Managers
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
-
-# ===== Neovim
-
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# ===== Sources
 
 echo "source $DIR/.tmux.conf" >> ~/.tmux.conf;
 
@@ -28,3 +19,14 @@ ln -s ${DIR}/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 mkdir -p ~/.config/nvim
 ln -s ${DIR}/nvim/init.vim ~/.config/nvim/init.vim
+
+# ===== Version Managers
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+
+# ===== Neovim
+
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+nvim +PlugInstall
