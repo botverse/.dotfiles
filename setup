@@ -1,12 +1,12 @@
 #!/bin/bash
 
-DIR='/home/moonbase/.dotfiles'
+DIR='~/.dotfiles'
 
-touch /home/moonbase/.profile
-touch /home/moonbase/.bashrc
+touch ~/.profile
+touch ~/.bashrc
 
-echo "source /home/moonbase/.dotfiles/.profile" >> /home/moonbase/.profile
-echo "source /home/moonbase/.profile" >> /home/moonbase/.bashrc
+echo "source $DIR/.profile" >> ~/.profile
+echo "source ~/.profile" >> ~/.bashrc
 
 # ===== Version Managers
 
@@ -14,38 +14,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 
 # ===== Sources
 
-sources=(.tmux.conf);
+echo "source $DIR/.tmux.conf" >> ~/.tmux.conf;
 
-# sources
+# ===== Symlinks
 
-for i in "${sources[@]}"; do
-  if [ -e /home/moonbase/.$i ]
-  then
-    echo "error file .$i exists";
-  else
-    echo "writing $i";
-    echo "source ${DIR}/$i" >> /home/moonbase/$i;
-  fi
-done
+mkdir -p ~/.config/alacritty
+ln -s ${DIR}/alacritty.yml ~/.config/alacritty/alacritty.yml
 
-# symlinks
-declare -A symlinks
-
-symlinks['alacritty.yml']='/home/moonbase/.config/alacritty'
-symlinks['nvim/init.vim']='/home/moonbase/.config'
-
-echo $(/bin/bash --version)
-for symlink in "${!symlinks[@]}"; do
-  if [ -e /home/moonbase/.$symlink ]
-  then
-    echo "error file .$symlink exists";
-  else
-    echo "symlinking ${symlinks[$symlink]}/$symlink";
-    echo "creating directory $(dirname "${symlinks[$symlink]}/$symlink")"
-    mkdir -p $(dirname "${symlinks[$symlink]}/$symlink")
-    ln -s ${DIR}/$symlink ${symlinks[$symlink]}/$symlink;
-  fi
-done
-
-ls -lart /home/moonbase
-echo $(dirname /home/moonbase)
+mkdir -p ~/.config/nvim
+ln -s ${DIR}/nvim/init.vim ~/.config/nvim/init.vim
