@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         curl \
         git \
         libssl-dev \
-        bat \
         wget \
         python \
         python3 \
