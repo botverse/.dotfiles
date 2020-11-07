@@ -19,9 +19,10 @@ echo "source $DIR/nvim/init.vim" >> ~/.config/nvim/init.vim
 # ===== Version Managers
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
-nvm install v15
-nvm use v15
-nvm alias default v15
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install stable
 
 # ===== Neovim
 curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python2
