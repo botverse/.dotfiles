@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         python \
         python3 \
         python-neovim \
-        pytho3-neovim
+        python3-neovim
 
 RUN useradd moonbase \
     && usermod -aG sudo moonbase \
@@ -26,13 +26,12 @@ RUN useradd moonbase \
     && usermod -d /home/moonbase --shell /bin/bash moonbase \
     && echo "moonbase ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-WORKDIR /home/moonbase
-
 USER moonbase
+WORKDIR /home/moonbase
 SHELL ["/bin/bash", "--login", "-c"]
 
 ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
-RUN git clone --branch denite https://github.com/botverse/.dotfiles /tmp/.dotfiles
+RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
 
-RUN /tmp/.dotfiles/setup
+RUN ~/.dotfiles/setup
 
