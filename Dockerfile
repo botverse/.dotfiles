@@ -15,14 +15,15 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget \
         python \
         python3 \
-        python-neovim \
+        # python-neovim \
         python3-neovim \
-        neovim
+        neovim \
+        bat
 
 # Install bat because it's not in bionic repos
-RUN curl https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb -Lo bat_0.16.0_amd64.deb \
-    && sudo dpkg -i bat_0.16.0_amd64.deb \
-    && rm bat_0.16.0_amd64.deb
+# RUN curl https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb -Lo bat_0.16.0_amd64.deb \
+#     && sudo dpkg -i bat_0.16.0_amd64.deb \
+#     && rm bat_0.16.0_amd64.deb
 
 RUN useradd moonbase \
     && usermod -aG sudo moonbase \
