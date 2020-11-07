@@ -29,6 +29,7 @@ declare -A symlinks
 
 symlinks['alacritty.yml']='~/.config/alacritty'
 
+echo $(/bin/bash --version)
 for symlink in "${symlinks[@]}"; do
   if [ -e ~/.$symlink ]
   then
