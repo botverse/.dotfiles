@@ -7,6 +7,8 @@ DIR='~/.dotfiles'
 touch ~/.profile
 touch ~/.bashrc
 
+echo "alias cat=batcat" >> ~/.profile
+
 echo "source $DIR/.profile" >> ~/.profile
 echo "source ~/.profile" >> ~/.bashrc
 echo "source $DIR/.tmux.conf" >> ~/.tmux.conf;
