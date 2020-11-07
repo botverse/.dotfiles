@@ -13,8 +13,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         git \
         libssl-dev \
         wget \
-        python \
-        python-pip \
+        python2 \
         python3-pip \
         # python-neovim \
         # python3-neovim \
