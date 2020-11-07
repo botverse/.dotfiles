@@ -41,6 +41,7 @@ for symlink in "${!symlinks[@]}"; do
     echo "error file .$symlink exists";
   else
     echo "symlinking ${symlinks[$symlink]}/$symlink";
+    echo "creating directory $(dirname "${symlinks[$symlink]}/$symlink")"
     mkdir -p $(dirname "${symlinks[$symlink]}/$symlink")
     ln -s ${DIR}/$symlink ${symlinks[$symlink]}/$symlink;
   fi
