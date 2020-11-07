@@ -14,7 +14,10 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         libssl-dev \
         bat \
         wget \
-    && rm -rf /var/lib/apt/lists/*
+        python \
+        python3 \
+        python-neovim \
+        pytho3-neovim
 
 RUN useradd moonbase \
     && usermod -aG sudo moonbase \
