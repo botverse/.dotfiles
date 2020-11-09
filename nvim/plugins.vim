@@ -43,6 +43,8 @@ Plug 'Shougo/neosnippet-snippets'
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 
+Plug 'wincent/vim-clipper'
+
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
 Plug 'mhinz/vim-signify'
