@@ -43,7 +43,6 @@ RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
 
 RUN touch ~/.profile \
     && touch ~/.bashrc \
-    && mkdir /workspace \
     && echo "alias cat=batcat" >> ~/.profile \
     && echo "source ~/.dotfiles/.profile" >> ~/.profile \
     && echo "source ~/.profile" >> ~/.bashrc
