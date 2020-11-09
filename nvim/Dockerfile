@@ -24,6 +24,11 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
 #     && sudo dpkg -i bat_0.16.0_amd64.deb \
 #     && rm bat_0.16.0_amd64.deb
 
+RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
+    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && echo "LANG=en_US.UTF-8" > /etc/locale.conf \
+    && locale-gen en_US.UTF-8
+
 RUN useradd moonbase \
     && usermod -aG sudo moonbase \
     && mkdir /home/moonbase \
@@ -41,11 +46,6 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
 RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
-
-RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
-    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
-    && echo "LANG=en_US.UTF-8" > /etc/locale.conf \
-    && locale-gen en_US.UTF-8
 
 RUN touch ~/.profile \
     && touch ~/.bashrc \
