@@ -36,6 +36,9 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 # ===== Sources
 
+ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
+RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
+
 RUN touch ~/.profile \
     && touch ~/.bashrc \
     && mkdir ~/workspace \
@@ -43,9 +46,6 @@ RUN touch ~/.profile \
     && echo "source ~/.dotfiles/.profile" >> ~/.profile \
     && echo "source ~/.profile" >> ~/.bashrc
 
-ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
-RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
-
 RUN ~/.dotfiles/nvim/dockersetup
 
-CMD nvim ~/${WORKSPACE:-workspace}
+CMD nvim ~/workspace${WORKSPACE:-""}
