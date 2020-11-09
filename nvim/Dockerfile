@@ -56,3 +56,6 @@ RUN touch ~/.profile \
     && echo "source ~/.profile" >> ~/.bashrc
 
 RUN ~/.dotfiles/nvim/dockersetup
+
+RUN mkdir ~/.config/coc
+VOLUME ~/.config

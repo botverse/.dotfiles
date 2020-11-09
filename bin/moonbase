@@ -19,10 +19,12 @@ function run_docker {
   FILE=$2
   WORKSPACE=$(basename $DIR)
   echo "dir $DIR"
-  docker run -v $DIR:/workspace/$WORKSPACE \
+  docker run \
+    -v $HOME/.dotfiles:/home/moonbase/.dotfiles \
+    -v $DIR:/workspace/$WORKSPACE \
     -w /workspace/$WORKSPACE \
     -it botverse:moonbase \
-    nvim $FILE
+    /bin/bash -lc "nvim $FILE"
 }
 function abs_path {
   (cd "$(dirname '$1')" &>/dev/null && printf "%s/%s" "$PWD" "${1##*/}")
