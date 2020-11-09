@@ -15,14 +15,20 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget \
         python2 \
         python3-pip \
+        bat \
         neovim \
-        netcat \
-        bat
+        rg \
+        netcat
 
 # Install bat because it's not in bionic repos
 # RUN curl https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb -Lo bat_0.16.0_amd64.deb \
 #     && sudo dpkg -i bat_0.16.0_amd64.deb \
 #     && rm bat_0.16.0_amd64.deb
+
+RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
+    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && echo "LANG=en_US.UTF-8" > /etc/locale.conf \
+    && locale-gen en_US.UTF-8
 
 RUN useradd moonbase \
     && usermod -aG sudo moonbase \
