@@ -50,4 +50,4 @@ RUN touch ~/.profile \
 
 RUN ~/.dotfiles/nvim/dockersetup
 
-CMD nvim /workspace/${WORKSPACE:-""}
+CMD /workspace/${WORKSPACE:-""} && nvim
