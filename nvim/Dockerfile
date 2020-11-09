@@ -51,8 +51,8 @@ RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
 
 RUN touch ~/.profile \
     && touch ~/.bashrc \
-    && echo "alias cat=batcat" >> ~/.profile \
     && echo "source ~/.dotfiles/.profile" >> ~/.profile \
+    && echo "alias cat=batcat" >> ~/.profile \
     && echo "source ~/.profile" >> ~/.bashrc
 
 RUN ~/.dotfiles/nvim/dockersetup
