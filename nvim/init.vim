@@ -122,7 +122,7 @@ endtry
 
 " === vim-clipper
 
-let g:ClipperAddress=host.docker.internal
+let g:ClipperAddress='host.docker.internal'
 
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
