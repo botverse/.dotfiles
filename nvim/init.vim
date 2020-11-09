@@ -120,6 +120,10 @@ catch
   echo 'Denite not installed. It should work after running :PlugInstall'
 endtry
 
+" === vim-clipper
+
+let g:ClipperAddress=host.docker.internal
+
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
@@ -326,6 +330,8 @@ endtry
 " === Editor shortcuts === "
 " Esc
 imap jj <Esc>
+
+
 
 " === Denite shorcuts === "
 "   ;         - Browser currently open buffers

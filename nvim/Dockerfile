@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         python2 \
         python3-pip \
         neovim \
+        netcat \
         bat
 
 # Install bat because it's not in bionic repos
