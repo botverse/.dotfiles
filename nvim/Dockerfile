@@ -27,6 +27,8 @@ RUN useradd moonbase \
     && usermod -aG sudo moonbase \
     && mkdir /home/moonbase \
     && chown moonbase:moonbase /home/moonbase \
+    && mkdir /workspace \
+    && chown moonbase:moonbase /workspace \
     && usermod -d /home/moonbase --shell /bin/bash moonbase \
     && echo "moonbase ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
@@ -41,11 +43,11 @@ RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
 
 RUN touch ~/.profile \
     && touch ~/.bashrc \
-    && mkdir ~/workspace \
+    && mkdir /workspace \
     && echo "alias cat=batcat" >> ~/.profile \
     && echo "source ~/.dotfiles/.profile" >> ~/.profile \
     && echo "source ~/.profile" >> ~/.bashrc
 
 RUN ~/.dotfiles/nvim/dockersetup
 
-CMD nvim ~/workspace${WORKSPACE:-""}
+CMD nvim /workspace/${WORKSPACE:-""}
