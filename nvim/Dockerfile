@@ -15,8 +15,6 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget \
         python2 \
         python3-pip \
-        # python-neovim \
-        # python3-neovim \
         neovim \
         bat
 
@@ -40,13 +38,14 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 RUN touch ~/.profile \
     && touch ~/.bashrc \
+    && mkdir ~/workspace \
     && echo "alias cat=batcat" >> ~/.profile \
     && echo "source ~/.dotfiles/.profile" >> ~/.profile \
-    && echo "source ~/.profile" >> ~/.bashrc \
+    && echo "source ~/.profile" >> ~/.bashrc
 
 ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
 RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
 
 RUN ~/.dotfiles/nvim/dockersetup
 
-CMD
+CMD nvim ~/${WORKSPACE:-workspace}
