@@ -2,17 +2,6 @@
 
 DIR='~/.dotfiles'
 
-# ===== Sources
-
-touch ~/.profile
-touch ~/.bashrc
-
-echo "alias cat=batcat" >> ~/.profile
-
-echo "source $DIR/.profile" >> ~/.profile
-echo "source ~/.profile" >> ~/.bashrc
-echo "source $DIR/.tmux.conf" >> ~/.tmux.conf;
-
 mkdir -p ~/.config/nvim
 echo "source $DIR/nvim/init.vim" >> ~/.config/nvim/init.vim
 

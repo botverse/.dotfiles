@@ -36,8 +36,17 @@ USER moonbase
 WORKDIR /home/moonbase
 SHELL ["/bin/bash", "--login", "-c"]
 
+# ===== Sources
+
+RUN touch ~/.profile \
+    && touch ~/.bashrc \
+    && echo "alias cat=batcat" >> ~/.profile \
+    && echo "source ~/.dotfiles/.profile" >> ~/.profile \
+    && echo "source ~/.profile" >> ~/.bashrc \
+
 ADD https://api.github.com/repos/botverse/.dotfiles/compare/denite...HEAD /dev/null
 RUN git clone --branch denite https://github.com/botverse/.dotfiles ~/.dotfiles
 
-RUN ~/.dotfiles/setup
+RUN ~/.dotfiles/nvim/dockersetup
 
+CMD
