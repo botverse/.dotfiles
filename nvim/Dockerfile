@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         build-essential \
         ca-certificates \
         sudo \
+        locales \
         curl \
         git \
         libssl-dev \
