@@ -19,6 +19,8 @@ function run_docker {
   FILE=$2
   WORKSPACE=$(basename $DIR)
   echo "dir $DIR"
+  echo "file $FILE"
+  echo "workspace $WORKSPACE"
   docker run \
     -v $HOME/.dotfiles:/home/moonbase/.dotfiles \
     -v $DIR:/workspace/$WORKSPACE \

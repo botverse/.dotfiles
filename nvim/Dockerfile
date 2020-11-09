@@ -31,17 +31,9 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
     && echo "LANG=en_US.UTF-8" > /etc/locale.conf \
     && locale-gen en_US.UTF-8
 
-RUN useradd moonbase \
-    && usermod -aG sudo moonbase \
-    && mkdir /home/moonbase \
-    && chown moonbase:moonbase /home/moonbase \
-    && mkdir /workspace \
-    && chown moonbase:moonbase /workspace \
-    && usermod -d /home/moonbase --shell /bin/bash moonbase \
-    && echo "moonbase ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN mkdir /workspace
+WORKDIR /workspace
 
-USER moonbase
-WORKDIR /home/moonbase
 SHELL ["/bin/bash", "--login", "-c"]
 
 # ===== Sources
