@@ -55,5 +55,3 @@ RUN touch ~/.profile \
     && echo "source ~/.profile" >> ~/.bashrc
 
 RUN ~/.dotfiles/nvim/dockersetup
-
-CMD cd /workspace/${WORKSPACE:-""} && nvim

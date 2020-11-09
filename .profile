@@ -23,7 +23,7 @@ export GOPATH=$HOME/go
 export DENO_INSTALL="$HOME/.deno"
 export TODO_DB_PATH=~/Dropbox/todo.json
 # bin
-export PATH=$PATH:/usr/local/bin:$HOME/.local/bin
+export PATH=$PATH:/usr/local/bin:$HOME/.local/bin:$HOME/.dotfiles/bin
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
