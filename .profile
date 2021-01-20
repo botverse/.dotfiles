@@ -1,16 +1,4 @@
-# requires 10 Ctrl-d (eof) to exit to avoid closing panes in tmux
-set -o ignoreeof
-
-
-DOTFILES_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-# locale
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-# prompt
-source $DOTFILES_DIR/utils/.git-prompt.sh
-export PS1='\[\e[01;36m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else echo "\[\e[31m\] ✘ "; fi`\[\e[00;37m\]\u\[\e[01;37m\]:`[[ $(git status 2> /dev/null | head -n2 | tail -n1) != "# Changes to be committed:" ]] && echo "\[\e[31m\]" || echo "\[\e[33m\]"``[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] || echo "\[\e[32m\]"`$(__git_ps1 "(%s)\[\e[00m\]")\[\e[01;34m\]\w\[\e[00m\]\$ '
+dir=~/.dotfiles
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -19,14 +7,36 @@ export NVM_DIR="$HOME/.nvm"
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+#docker
+removecontainers() {
+    docker stop $(docker ps -aq)
+    docker rm $(docker ps -aq)
+}
+armageddon() {
+    removecontainers
+    docker network prune -f
+    docker rmi -f $(docker images --filter dangling=true -qa)
+    docker volume rm $(docker volume ls --filter dangling=true -q)
+    docker rmi -f $(docker images -qa)
+}
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias cat='batcat'
+alias px='ps aux | grep'
+alias watch="$HOME/.local/bin/watch"
+
 export GOPATH=$HOME/go
 export DENO_INSTALL="$HOME/.deno"
 export TODO_DB_PATH=~/Dropbox/todo.json
 # bin
-export PATH=$PATH:/usr/local/bin:$HOME/.local/bin:$HOME/.dotfiles/bin
+export PATH=$PATH:/usr/local/bin:$HOME/.local/bin:/opt/homebrew/bin
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.yarn/bin
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:$HOME/.platformio/penv/bin
 export EDITOR=nvim
@@ -45,8 +55,5 @@ alias watch="$HOME/.local/bin/watch"
 
 # git
 # eval "$(hub alias -s)"
-source $DOTFILES_DIR/utils/gitfuncs/gitutils.sh
-source $DOTFILES_DIR/utils/git-completion.bash
-source $DOTFILES_DIR/utils/colors.sh
-source $DOTFILES_DIR/utils/docker.sh
+source $dir/utils/gitfuncs/gitutils.sh
 
