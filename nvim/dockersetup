@@ -1,0 +1,29 @@
+#!/bin/bash
+
+DIR='~/.dotfiles'
+
+mkdir -p ~/.config/nvim
+echo "source $DIR/nvim/init.vim" >> ~/.config/nvim/init.vim
+
+# ===== Version Managers
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install stable
+npm install -g neovim
+
+# ===== Neovim
+curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python2
+
+pip2 install pynvim
+pip3 install pynvim
+
+curl -fLo "$HOME"/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+nvim +'PlugInstall --sync' +UpdateRemotePlugins +qa
+
+ls -lart ~/.dotfiles
+cp ~/.dotfiles/nvim/space.vim ~/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/space.vim

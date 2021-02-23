@@ -1,0 +1,66 @@
+#! /usr/bin/env bash
+
+set -o errexit
+set -e
+
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+
+CURRENT_DIR=$PWD
+
+if [[ $# = 0 ]]; then
+  COMMAND="help"
+else
+  COMMAND=$1
+  shift
+fi
+
+function run_docker {
+  DIR=$1
+  FILE=$2
+  WORKSPACE=$(basename $DIR)
+  echo "dir $DIR"
+  echo "file $FILE"
+  echo "workspace $WORKSPACE"
+  docker run \
+    -v $HOME/.dotfiles:/home/moonbase/.dotfiles \
+    -v $DIR:/workspace/$WORKSPACE \
+    -w /workspace/$WORKSPACE \
+    -it botverse:moonbase \
+    /bin/bash -lc "nvim $FILE"
+}
+function abs_path {
+  (cd "$(dirname '$1')" &>/dev/null && printf "%s/%s" "$PWD" "${1##*/}")
+}
+
+function run_dev {
+  if [[ -d $1 ]]
+  then
+    DIR=$(abs_path $1)
+    FILE=""
+    run_docker $DIR $FILE
+  elif [[ -f $1 ]]
+  then
+    DIR=$(dirname $(abs_path $1))
+    FILE=$(basename $1)
+    run_docker $DIR $FILE
+    echo $1
+  else
+    echo "it's neither"
+    echo $@
+    exit 1
+  fi
+}
+
+case $COMMAND in
+  dev)
+    run_dev $@
+    ;;
+  h|help|*)
+    echo -e "Usage moonbase command [options]\n"
+    echo "Commands:"
+    echo "  h, help                 Shows this dialogue"
+    echo "     dev [path]           Runs nvim with path defaults to PWD"
+    exit 1
+    ;;
+esac
+
