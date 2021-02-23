@@ -1,3 +1,6 @@
+# prompt
+source $dir/utils/.git-prompt.sh
+export PS1='\[\e[01;36m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else echo "\[\e[31m\] ✘ "; fi`\[\e[00;37m\]\u\[\e[01;37m\]@$(hostname):`[[ $(git status 2> /dev/null | head -n2 | tail -n1) != "# Changes to be committed:" ]] && echo "\[\e[31m\]" || echo "\[\e[33m\]"``[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] || echo "\[\e[32m\]"`$(__git_ps1 "(%s)\[\e[00m\]")\[\e[01;34m\]\w\[\e[00m\]\$ '
 dir=~/.dotfiles
 
 # nvm
@@ -29,6 +32,8 @@ alias watch="$HOME/.local/bin/watch"
 
 export GOPATH=$HOME/go
 export DENO_INSTALL="$HOME/.deno"
+
+export TODO_FORMAT=pretty
 export TODO_DB_PATH=~/Dropbox/todo.json
 # bin
 export PATH=$PATH:/usr/local/bin:$HOME/.local/bin:/opt/homebrew/bin
