@@ -36,7 +36,7 @@ function ga() {
 
 function gac() {
   ga
-  gc "$*"
+  gc "$@"
 }
 
 # $ gb branch-name
