@@ -1,6 +1,9 @@
 scriptencoding utf-8
 source ~/.dotfiles/nvim/plugins.vim
 
+
+" from https://github.com/ctaylo21/jarvis
+
 " splash
 autocmd VimEnter * if !argc() | e ~/.dotfiles/nvim/.vimsplash | endif
 
@@ -353,7 +356,7 @@ nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
   imap <silent><buffer> <C-o>
-  \ <Plug>(denite_filter_quit)
+  \ <Plug>(denite_filter_update)
   inoremap <silent><buffer><expr> <Esc>
   \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> <Esc>

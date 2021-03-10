@@ -1,6 +1,6 @@
 ```bash
 # Neosnippet
-<C-k>     neosnippet expand
+<C-k>           neosnippet expand
 
 # Denite
 ;               buffer list
