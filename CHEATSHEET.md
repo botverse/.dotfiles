@@ -36,6 +36,7 @@ p               Preview currently selected file
 <leader>dv      Jump to definition of current symbol in a split window
 <leader>dr      Jump to references of current symbol
 <leader>dj      Jump to implementation of current symbol
+<leader>do      List options
 <leader>ds      Fuzzy search current project symbols
 
 # whitespace

@@ -86,6 +86,10 @@ call denite#custom#var('grep', 'final_opts', [])
 " Remove date from buffer list
 call denite#custom#var('buffer', 'date_format', '')
 
+" Matchers
+call denite#custom#source('buffer', 'matchers',
+    \ ['matcher/ignore_current_buffer'])
+
 " Custom options for Denite
 "   auto_resize             - Auto resize the Denite window height automatically.
 "   prompt                  - Customize denite prompt
@@ -100,7 +104,7 @@ let s:denite_options = {'default' : {
 \ 'start_filter': 1,
 \ 'auto_resize': 1,
 \ 'source_names': 'short',
-\ 'prompt': 'λ ',
+\ 'prompt': '🚀 ',
 \ 'highlight_matched_char': 'QuickFixLine',
 \ 'highlight_matched_range': 'Visual',
 \ 'highlight_window_background': 'Visual',
@@ -415,6 +419,9 @@ nmap <silent> <leader>f :NERDTreeFind<CR>
 noremap <Space> <PageDown>
 noremap - <PageUp>
 
+" Buffer navigation
+nnoremap <leader>zz zt15<C-y>
+
 " Quick window switching
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
@@ -423,11 +430,14 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " === coc.nvim === "
 "   <leader>dd    - Jump to definition of current symbol
+"   <leader>dv    - Jump to definition of current symbol in a new vertical split
+"   <leader>dt    - Jump to definition of current symbol in a new tab
 "   <leader>dr    - Jump to references of current symbol
 "   <leader>dj    - Jump to implementation of current symbol
 "   <leader>ds    - Fuzzy search current project symbols
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dv :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> <leader>dt :call CocAction('jumpDefinition', 'tab drop')<CR>
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
 nmap <silent> <leader>do <Plug>(coc-list-options)
@@ -465,6 +475,9 @@ vnoremap <leader>p "_dP
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Open NERDTree on the right side
+let g:NERDTreeWinPos = "right"
 
 " === Search === "
 " ignore case when searching
