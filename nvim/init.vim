@@ -463,6 +463,8 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+let g:webdevicons_enable_denite = 0
+
 " === Search === "
 " ignore case when searching
 set ignorecase
