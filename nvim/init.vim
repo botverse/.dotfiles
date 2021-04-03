@@ -11,9 +11,6 @@ autocmd VimEnter * if !argc() | e ~/.dotfiles/nvim/.vimsplash | endif
 " ===                           EDITING OPTIONS                            === "
 " ============================================================================ "
 
-" Disable line numbers
-set nonumber
-
 " Don't show last command
 set noshowcmd
 
@@ -410,20 +407,6 @@ endfunction
 nmap <silent> <C-\> :NERDTreeToggle<CR>
 nmap <silent> <leader>f :NERDTreeFind<CR>
 
-"   <Space> - PageDown
-"   -       - PageUp
-noremap <Space> <PageDown>
-noremap - <PageUp>
-
-" Buffer navigation
-nnoremap <leader>zz zt15<C-y>
-
-" Quick window switching
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-
 " === coc.nvim === "
 "   <leader>dd    - Jump to definition of current symbol
 "   <leader>dv    - Jump to definition of current symbol in a new vertical split
@@ -455,17 +438,23 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 "   <leader>w - Easy-motion highlights first word letters bi-directionally
 map <leader>w <Plug>(easymotion-bd-w)
 
+" === Misc shortcuts ==="
 " Allows you to save files you opened without write permissions via sudo
 cmap w!! w !sudo tee %
 
-" === vim-jsdoc shortcuts ==="
-" Generate jsdoc for function under cursor
-nmap <leader>z :JsDoc<CR>
+" Buffer navigation
+nnoremap <leader>zz zt15<C-y>
 
 " Delete current visual selection and dump in black hole buffer before pasting
 " Used when you want to paste over something without it getting copied to
 " Vim's default buffer
 vnoremap <leader>p "_dP
+
+" Quick window switching
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
@@ -505,5 +494,3 @@ if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
 
-" Automatically save files on blur
-au FocusLost * silent! wa

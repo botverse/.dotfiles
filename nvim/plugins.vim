@@ -27,7 +27,7 @@ Plug 'AndrewRadev/tagalong.vim'
 " Trailing whitespace highlighting & automatic fixing
 Plug 'ntpeters/vim-better-whitespace'
 
-" auto-close plugin
+" Bracket auto-close plugin
 Plug 'rstacruz/vim-closer'
 
 " auto-save plugin
@@ -42,15 +42,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Denite - Fuzzy finding, buffer management
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins', 'branch': 'master' }
 
-" Print function signatures in echo area
-Plug 'Shougo/echodoc.vim'
-
 " Copy to clipper
 Plug 'wincent/vim-clipper'
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
 Plug 'mhinz/vim-signify'
+
+" Git commands in vim
 Plug 'tpope/vim-fugitive'
 
 " === Javascript Plugins === "
@@ -59,9 +58,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " ReactJS JSX syntax highlighting
 Plug 'mxw/vim-jsx'
-
-" Generate JSDoc commands based on function signature
-Plug 'heavenshell/vim-jsdoc'
 
 " === Syntax Highlighting === "
 
