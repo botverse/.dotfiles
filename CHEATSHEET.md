@@ -5,6 +5,7 @@
 # Denite
 ;               buffer list
 <leader>t       files in current dir
+<leader>n       reopen last denite window
 <leader>g       search current dir
 <leader>j       search current dir for occurrences of word under cursor
 
@@ -30,6 +31,9 @@ p               Preview currently selected file
 <leader>n       Toggle NERDTree on/off
 <leader>f       Opens current file location in NERDTree
 
+# Navigation shortcuts
+
+<leader>zz      Scroll to put current line at line 15
 
 # coc.nvim
 <leader>dd      Jump to definition of current symbol

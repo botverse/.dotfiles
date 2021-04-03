@@ -104,7 +104,7 @@ let s:denite_options = {'default' : {
 \ 'start_filter': 1,
 \ 'auto_resize': 1,
 \ 'source_names': 'short',
-\ 'prompt': '🚀 ',
+\ 'prompt': '..',
 \ 'highlight_matched_char': 'QuickFixLine',
 \ 'highlight_matched_range': 'Visual',
 \ 'highlight_window_background': 'Visual',
@@ -128,8 +128,10 @@ catch
 endtry
 
 " === vim-clipper
-
 let g:ClipperAddress='host.docker.internal'
+
+" === vim-auto-save
+let g:auto_save = 1
 
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
@@ -146,18 +148,6 @@ inoremap <silent><expr> <TAB>
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" === NeoSnippet === "
-" Map <C-k> as shortcut to activate snippet if available
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" Load custom snippets from snippets folder
-let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-
-" Hide conceal markers
-let g:neosnippet#enable_conceal_markers = 0
-
 " === NERDTree === "
 " Show hidden files/directories
 let g:NERDTreeShowHidden = 1
@@ -172,6 +162,10 @@ let g:NERDTreeDirArrowCollapsible = '⬎'
 " Hide certain files and directories from NERDTree
 let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir]]', '\.sass-cache$']
 
+" Open NERDTree on the right side
+let g:NERDTreeWinPos = "right"
+
+
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
 
@@ -180,7 +174,7 @@ try
 let g:airline_extensions = ['branch', 'hunks', 'coc']
 
 " Update section z to just have line number
-let g:airline_section_z = airline#section#create(['linenr'])
+let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr'])
 
 " Do not draw separators for empty sections (only for the active window) >
 let g:airline_skip_empty_sections = 1
@@ -342,13 +336,15 @@ imap jj <Esc>
 
 " === Denite shorcuts === "
 "   ;         - Browser currently open buffers
+"   <leader>n - Opens Denite window and resume at next option
 "   <leader>t - Browse list of files in current directory
 "   <leader>g - Search current directory for occurences of given term and close window if no results
 "   <leader>j - Search current directory for occurences of word under cursor
 nmap ; :Denite buffer<CR>
+nmap <leader>n :Denite -resume -cursor-pos=+1<CR>
 nmap <leader>t :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
+nnoremap <leader>g :Denite -start-filter grep:::!<CR>
+nnoremap <leader>j :DeniteCursorWord grep:.<CR>
 
 " Define mappings while in 'filter' mode
 "   <C-o>         - Switch to normal mode inside of search results
@@ -434,6 +430,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 "   <leader>dt    - Jump to definition of current symbol in a new tab
 "   <leader>dr    - Jump to references of current symbol
 "   <leader>dj    - Jump to implementation of current symbol
+"   <leader>dn    - Resume with last open list
 "   <leader>ds    - Fuzzy search current project symbols
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dv :call CocAction('jumpDefinition', 'vsplit')<CR>
@@ -441,6 +438,7 @@ nmap <silent> <leader>dt :call CocAction('jumpDefinition', 'tab drop')<CR>
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
 nmap <silent> <leader>do <Plug>(coc-list-options)
+nnoremap <silent> <leader>dn :<C-u>CocListResume<CR>
 nnoremap <silent> <leader>ds :<C-u>CocList -I -N --top symbols<CR>
 
 " === vim-better-whitespace === "
@@ -475,9 +473,6 @@ vnoremap <leader>p "_dP
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Open NERDTree on the right side
-let g:NERDTreeWinPos = "right"
 
 " === Search === "
 " ignore case when searching

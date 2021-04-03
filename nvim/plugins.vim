@@ -21,11 +21,17 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " === Editing Plugins === "
+" Edit opening / closing tags
+Plug 'AndrewRadev/tagalong.vim'
+
 " Trailing whitespace highlighting & automatic fixing
 Plug 'ntpeters/vim-better-whitespace'
 
 " auto-close plugin
 Plug 'rstacruz/vim-closer'
+
+" auto-save plugin
+Plug '907th/vim-auto-save'
 
 " Improved motion in Vim
 Plug 'easymotion/vim-easymotion'
@@ -36,13 +42,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Denite - Fuzzy finding, buffer management
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins', 'branch': 'master' }
 
-" Snippet support
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 
+" Copy to clipper
 Plug 'wincent/vim-clipper'
 
 " === Git Plugins === "
@@ -62,14 +65,14 @@ Plug 'heavenshell/vim-jsdoc'
 
 " === Syntax Highlighting === "
 
-" Syntax highlighting for nginx
-Plug 'chr4/nginx.vim'
-
 " Syntax highlighting for javascript libraries
 Plug 'othree/javascript-libraries-syntax.vim'
 
 " Improved syntax highlighting and indentation
 Plug 'othree/yajs.vim'
+
+" Zig
+Plug 'ziglang/zig.vim'
 
 " === UI === "
 " File explorer
