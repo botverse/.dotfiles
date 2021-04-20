@@ -88,38 +88,15 @@ call denite#custom#source('buffer', 'matchers',
     \ ['matcher/ignore_current_buffer'])
 
 " Custom options for Denite
-"   auto_resize             - Auto resize the Denite window height automatically.
-"   prompt                  - Customize denite prompt
-"   direction               - Specify Denite window direction as directly below current pane
-"   winminheight            - Specify min height for Denite window
-"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
-"   prompt_highlight        - Specify color of prompt
-"   highlight_matched_char  - Matched characters highlight
-"   highlight_matched_range - matched range highlight
-let s:denite_options = {'default' : {
-\ 'split': 'floating',
-\ 'start_filter': 1,
-\ 'auto_resize': 1,
-\ 'source_names': 'short',
-\ 'prompt': '..',
-\ 'highlight_matched_char': 'QuickFixLine',
-\ 'highlight_matched_range': 'Visual',
-\ 'highlight_window_background': 'Visual',
-\ 'highlight_filter_background': 'DiffAdd',
-\ 'winrow': 1,
-\ 'vertical_preview': 1
-\ }}
+call denite#custom#option('default', 'start_filter', 1)
+call denite#custom#option('default', 'source_names', 'short')
+call denite#custom#option('default', 'prompt', '..')
+call denite#custom#option('default', 'highlight_matched_char', 'QuickFixLine')
+call denite#custom#option('default', 'highlight_matched_range', 'Visual')
+call denite#custom#option('default', 'highlight_window_background', 'Visual')
+call denite#custom#option('default', 'highlight_filter_background', 'DiffAdd')
+call denite#custom#option('default', 'winrow', 1)
 
-" Loop through denite options and enable them
-function! s:profile(opts) abort
-  for l:fname in keys(a:opts)
-    for l:dopt in keys(a:opts[l:fname])
-      call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
-    endfor
-  endfor
-endfunction
-
-call s:profile(s:denite_options)
 catch
   echo 'Denite not installed. It should work after running :PlugInstall'
 endtry
@@ -340,7 +317,7 @@ imap jj <Esc>
 nmap ; :Denite buffer<CR>
 nmap <leader>n :Denite -resume -cursor-pos=+1<CR>
 nmap <leader>t :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :Denite -start-filter grep:::!<CR>
+nnoremap <leader>g :Denite -start-filter -auto-action=preview grep:::!<CR>
 nnoremap <leader>j :DeniteCursorWord grep:.<CR>
 
 " Define mappings while in 'filter' mode

@@ -43,7 +43,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins', 'branch': 'master' }
 
 " Copy to clipper
-Plug 'wincent/vim-clipper'
+" Plug 'wincent/vim-clipper'
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
