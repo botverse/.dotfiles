@@ -1,10 +1,10 @@
 # Utility functions for git
-# 
+#
 # Install like this:
 # cd ~ && git clone https://gist.github.com/botverse/2d1458200db1b84d5620 .gitfonz
 # echo "source .gitfonz/gitutils.sh" >> .bash_profile
 
-# $ gc This is my comment 
+# $ gc This is my comment
 # => git commit -a -m "This is my comment"
 
 function gc() {
@@ -25,7 +25,7 @@ function gp() {
 }
 
 # $ ga
-# => git add . 
+# => git add .
 
 function ga() {
   git add .
@@ -64,7 +64,7 @@ function gb () {
 }
 
 # $ gs
-# => git branch --sort=-committerdate 
+# => git branch --sort=-committerdate
 
 function gs () {
   git branch --sort=-committerdate | head
@@ -80,14 +80,25 @@ function changedsince() {
     echo "  changesince master -- src/config"
     echo "  will tell you what changed in src/config in master branch since"
     echo "  your current branch diverged"
-    exit 1
+    return 1
   fi
 
   target=$1
   shift
+
   current=$(git rev-parse --verify HEAD)
   common=$(git merge-base $current $target)
-  command="git diff $common $target $@"
+
+  if [[ $1 = "-i" ]]; then
+    a=$common
+    b=$current
+    shift
+  else
+    a=$current
+    b=$common
+  fi
+
+  command="git diff $a $b $@"
   echo $command
   eval $command
 }

@@ -4,9 +4,6 @@ source ~/.dotfiles/nvim/plugins.vim
 
 " from https://github.com/ctaylo21/jarvis
 
-" splash
-autocmd VimEnter * if !argc() | e ~/.dotfiles/nvim/.vimsplash | endif
-
 " ============================================================================ "
 " ===                           EDITING OPTIONS                            === "
 " ============================================================================ "
@@ -317,7 +314,7 @@ imap jj <Esc>
 nmap ; :Denite buffer<CR>
 nmap <leader>n :Denite -resume -cursor-pos=+1<CR>
 nmap <leader>t :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :Denite -start-filter -auto-action=preview grep:::!<CR>
+nnoremap <leader>g :Denite -auto-action=preview grep:::!<CR>
 nnoremap <leader>j :DeniteCursorWord grep:.<CR>
 
 " Define mappings while in 'filter' mode
@@ -439,6 +436,9 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Close buffer without closing window
+command! BD :bn|:bd#
 
 let g:webdevicons_enable_denite = 0
 

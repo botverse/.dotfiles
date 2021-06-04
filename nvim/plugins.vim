@@ -70,6 +70,9 @@ Plug 'othree/yajs.vim'
 " Zig
 Plug 'ziglang/zig.vim'
 
+" === Http === "
+Plug 'nicwest/vim-http'
+
 " === UI === "
 " File explorer
 Plug 'scrooloose/nerdtree'
