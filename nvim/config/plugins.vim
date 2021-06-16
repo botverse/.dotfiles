@@ -36,11 +36,12 @@ Plug '907th/vim-auto-save'
 " Improved motion in Vim
 Plug 'easymotion/vim-easymotion'
 
-" Intellisense Engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Denite - Fuzzy finding, buffer management
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins', 'branch': 'master' }
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 " Copy to clipper
 " Plug 'wincent/vim-clipper'
@@ -83,10 +84,6 @@ Plug 'mhartington/oceanic-next'
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" Icons
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Tmux navigation
 Plug 'christoomey/vim-tmux-navigator'

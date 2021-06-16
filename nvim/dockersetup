@@ -26,4 +26,3 @@ curl -fLo "$HOME"/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 nvim +'PlugInstall --sync' +UpdateRemotePlugins +qa
 
 ls -lart ~/.dotfiles
-cp ~/.dotfiles/nvim/space.vim ~/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/space.vim
