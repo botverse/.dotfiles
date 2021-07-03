@@ -41,7 +41,7 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins', 'branch': 'master' }
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+" Plug 'glepnir/lspsaga.nvim'
 
 " Copy to clipper
 " Plug 'wincent/vim-clipper'
