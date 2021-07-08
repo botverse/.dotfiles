@@ -15,6 +15,13 @@ nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 autocmd FileType qf if getwininfo(win_getid())[0].loclist | execute 'nnoremap <silent><buffer><tab> :.ll <bar> lclose<cr>' | end
 autocmd FileType qf if !getwininfo(win_getid())[0].loclist | execute 'nnoremap <silent><buffer><tab> :.cc <bar> cclose<cr>' | end
 
+" Position the (global) quickfix window at the very bottom of the window
+" (useful for making sure that it appears underneath splits)
+"
+" NOTE: Using a check here to make sure that window-specific location-lists
+" aren't effected, as they use the same `FileType` as quickfix-lists.
+autocmd FileType qf if (getwininfo(win_getid())[0].loclist != 1) | wincmd J | endif
+
 " lua vim.lsp.util.close_preview_autocmd({"BufHidden", "BufLeave"})
 
 " auto-format
