@@ -1,4 +1,3 @@
-luafile ~/.dotfiles/nvim/config/lsp-compe.lua
 luafile ~/.dotfiles/nvim/config/lsp-langs.lua
 
 " LSP config (the mappings used in the default file don't quite work right)
